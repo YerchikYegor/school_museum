@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+    :root {
+      /* Изменены цвета с голубого на светло-зеленые и затем немного затемнены */
+      --primary-color: #76C776;  /* Чуть темнее оригинального LightGreen */
+      --primary-dark:  #2E8B57;  /* Темный зеленый */
+      --secondary-color: #28a745;
+      --danger-color: #ff4d4d;
+      --bg-light: #f0f4f8;
+      --bg-dark: #d6d6d6;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to bottom, var(--bg-light), var(--bg-dark));
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    /* Header и Навигация */
+    .header {
+      background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      transition: background 0.3s ease;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 14px 26px;
+      /* Градиент обновлен до более темных зеленых оттенков */
+      background: linear-gradient(90deg, #2E8B57, #1C7C3A);
+      border-radius: 30px;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .header a:hover {
+      background: linear-gradient(90deg, #1C7C3A, #155A2C);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Основной контейнер */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      background: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    /* Карточки товаров */
+    .post-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .post {
+      flex: 0 0 calc(33.333% - 20px);
+      background: linear-gradient(135deg, var(--card-bg), #f8f8f8);
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .post:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: opacity 0.3s ease;
+    }
+
+    .content img:hover {
+      opacity: 0.9;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    .price {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--secondary-color);
+      margin: 10px 0;
+    }
+
+    /* Кнопка удаления товара */
+    .delete-button-container {
+      margin-top: 15px;
+    }
+
+    .delete-button {
+      font-size: 0.9rem;
+      font-weight: bold;
+      padding: 10px 20px;
+      color: #fff;
+      background: linear-gradient(90deg, var(--danger-color), #ff0000);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .delete-button:hover {
+      background: linear-gradient(90deg, #cc0000, #990000);
+      transform: translateY(-2px);
+    }
+
+    /* Кнопка добавления нового товара */
+    .add-button-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .add-button {
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 12px 25px;
+      color: #fff;
+      background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .add-button:hover {
+      background: linear-gradient(90deg, var(--primary-dark), #1C7C3A);
+      transform: translateY(-2px);
+    }
+
+    /* Стили для изображения Ишака (уменьшенный размер) */
+    .hero-img {
+      max-width: 60px; /* уменьшен с 200px до 100px */
+      width: 100%;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    /* Медиа запросы */
+    @media (max-width: 768px) {
+      .post {
+        flex: 0 0 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .post {
+        flex: 0 0 100%;
+      }
+      .header-nav {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+  </style>
+    <script>
+        function confirmDelete(form) {
+            if (confirm("Вы точно хотите удалить этот товар?")) {
+                form.submit();
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Заголовок с названием и кнопками -->
+    <div class="header">
+        <h1>ISHAK_SHMOT</h1>
+        <div class="header-nav">
+            <a href="/admin_main/">На админку</a> <!-- Added Reviews Button -->
+            <a href="/a_about/">О нас</a>
+            <a href="/logout/">Log out</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="post-row">
+            {% for instagram in data %}
+            <div class="post">
+                <h1 class="title">{{instagram[1]}}</h1>
+                <div class="content">
+                    <img id="post_img" src="{{url_for('static', filename=instagram[2])}}">
+                </div>
+                <h3 class="description">{{instagram[3]}}</h3>
+                <!-- Кнопка для удаления товара -->
+                <div class="delete-button-container">
+                    <form action="/delete_reviews/{{instagram[0]}}" method="POST" onsubmit="event.preventDefault(); confirmDelete(this);">
+                        <button class="delete-button" type="submit">Удалить отзыв</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Кнопка для добавления нового поста -->
+        <div class="add-button-container">
+            <a href="/add_reviews/" class="add-button">Добавить отзыв</a>
+        </div>
+    </div>
+</body>
+</html>

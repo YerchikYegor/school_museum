@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  <title>Главная</title>
+
+  <script>
+    function goToProductPage(productId) {
+      window.location.href = "/product/" + productId;
+    }
+  </script>
+  <script>
+    function confirmDelete(form) {
+      if (confirm("Вы точно хотите удалить этот товар?")) {
+        form.submit();
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>ISHAK_SHMOT</h1>
+    <img src="{{ url_for('static', filename='uploads/7317.jpg') }}" class="hero-img" alt="Ишак">
+    <div class="header-nav">
+      <a href="/search/">Поиск</a>
+      <a href="/admin_reviews/">Отзывы</a>
+      <a href="/a_about/">О нас</a>
+      <a href="/logout/">Log out</a>
+    </div>
+  </div>
+  <!-- Main Container -->
+  <div class="container">
+    <div class="post-row">
+      {% for instagram in data %}
+      <div class="post" onclick="goToProductPage({{instagram[0]}})">
+        <h1 class="title">{{instagram[1]}}</h1>
+        <!-- Добавляем отображение бренда ниже названия товара -->
+        <p class="brand">Производитель: {{instagram[5]}}</p>
+        <div class="content">
+          <img id="post_img" src="{{url_for('static', filename=instagram[2])}}" alt="{{instagram[1]}}">
+        </div>
+        <h3 class="description">за информацией нажми на товар</h3>
+        <p class="price">Цена: {{instagram[4]}} byn</p>
+        <!-- Delete Button -->
+        <div class="delete-button-container">
+          <form action="/delete/{{instagram[0]}}" method="POST" onsubmit="event.preventDefault(); confirmDelete(this);">
+            <button class="delete-button" type="submit">Удалить товар</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- Add Button -->
+    <div class="add-button-container">
+      <a href="/add/" class="add-button">Добавить новый товар</a>
+    </div>
+  </div>
+</body>
+</html>

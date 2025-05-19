@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Форма авторизации</title>
+  <!-- Подключение красивого шрифта -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Общие стили */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Стили для контейнера формы с эффектом стеклянной панели */
+    .form-container {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      max-width: 400px;
+      width: 90%;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Анимация появления контейнера */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Заголовок формы */
+    h2 {
+      text-align: center;
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Стили flash-сообщений */
+    .flash-message {
+      padding: 0.75rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    .flash-message.success {
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+    }
+    .flash-message.danger {
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+    }
+
+    /* Форма и её элементы */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 1.5rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+      outline: none;
+    }
+
+    /* Кнопки входа и перехода на главную */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    input[type="submit"],
+    .register-button {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      text-decoration: none;
+      text-align: center;
+      flex: 1;
+    }
+
+    input[type="submit"]:hover,
+    .register-button:hover {
+      background: linear-gradient(135deg, #764ba2, #667eea);
+      transform: translateY(-2px);
+    }
+
+    /* Адаптивное поведение */
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 1.5rem;
+      }
+      .button-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <!-- Блок для flash-сообщений -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p class="flash-message {{ category }}">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <h2>Авторизация</h2>
+    <form action="/authorization/" method="post">
+      <label for="username">Логин:</label>
+      <input type="text" id="username" name="username" placeholder="Введите ваш логин" required>
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" name="password" placeholder="Введите ваш пароль" required>
+      <div class="button-container">
+        <input type="submit" value="Войти">
+        <a href="/" class="register-button">На главную</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

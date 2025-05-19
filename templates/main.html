@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Главная</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  <script>
+    function goToProductPage(productId) {
+      window.location.href = "/product/" + productId;
+    }
+  </script>
+</head>
+<body>
+  <div class="header">
+    <h1>ISHAK_SHMOT</h1>
+    <div class="header-nav">
+      <a href="/search/">Поиск</a>
+      <a href="/reviews/">Отзывы</a>
+      <a href="/about/">О нас</a>
+      <a href="/login/">Log in</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="post-row">
+      {% for instagram in data %}
+      <div class="post" onclick="goToProductPage({{instagram[0]}})">
+        <h1 class="title">{{instagram[1]}}</h1>
+        <div class="content">
+          <img src="{{url_for('static', filename=instagram[2])}}" alt="{{instagram[1]}}">
+        </div>
+        <h3 class="description">{{instagram[3]}}</h3>
+        <p class="price">Цена: {{instagram[4]}} BYN</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

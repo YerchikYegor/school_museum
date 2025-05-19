@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>О нас</title>
+
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 30px 20px;
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    /* Стили для заголовков */
+    h1 {
+      color: #2E8B57;
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #4CAF50;
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    /* Красивое оформление текста */
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 15px 0;
+    }
+
+    /* Стили для кнопки-ссылки */
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 10px 15px;
+      background-color: #2E8B57;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #1C6B3A;
+    }
+
+    /* Стили для изображения Ишака */
+    .hero-img {
+      max-width: 200px;
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Изображение Ишака вверху страницы -->
+    <img src="{{ url_for('static', filename='uploads/7317.jpg') }}" class="hero-img" alt="Ишак">
+
+    <h1>О нас</h1>
+    <h2>ISHAK_SHMOT</h2>
+    <p>Добро пожаловать в наш интернет-магазин – место, где стиль, качество и удобство встречаются для создания уникального шопинга!</p>
+    <p>Мы предлагаем тщательно отобранные модели гардероба, которые подчеркнут вашу индивидуальность и позволят чувствовать себя уверенно каждый день.</p>
+    <p><strong>Особенности нашего сервиса:</strong></p>
+    <p>• Продажа эксклюзивного личного гардероба 👔<br>
+       • Фиксированные цены – возврат не предусмотрен ❌<br>
+       • Доставка и личные встречи в Гродно 🌇</p>
+    <p>Владельцы: <em>inst:igolka339</em> и <em>inst:beluga098</em></p>
+    <p>По всем вопросам пишите: <em>inst:igolka339</em> или <em>inst:ishak_shmot</em></p>
+    <a href="/">Вернуться на главную</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Покупка товара</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #d9534f;
+        }
+
+        .insta-link {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .insta-link:hover {
+            color: #0056b3;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 12px 25px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Дорогие покупатели!</h1>
+        <p>Мы приносим свои искренние извинения, но покупка данного товара возможна только через владельца.</p>
+        <p>По вопросам приобретения, пожалуйста, обращайтесь к <span class="highlight">владельцу</span> по Instagram:</p>
+        <a href="https://www.instagram.com/igolka339" class="insta-link" target="_blank">@igolka339</a>
+        <p>или</p>
+        <a href="https://www.instagram.com/ishak_shmot" class="insta-link" target="_blank">@ishak_shmot</a>
+        <br>
+        <a href="/" class="back-button">Вернуться на главную</a>
+    </div>
+</body>
+</html>
