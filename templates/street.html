@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ street[1] }}</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    .street-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #007bff;
+      margin-bottom: 20px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .street-title:after {
+      content: "";
+      width: 50px;
+      height: 3px;
+      background-color: #007bff;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .street-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .street-image:hover {
+      transform: scale(1.03);
+    }
+
+    .street-description {
+      font-size: 1rem;
+      color: #555;
+      margin-top: 20px;
+      line-height: 1.8;
+      text-align: justify;
+      white-space: pre-line;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 12px 25px;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-button {
+      background-color: #007bff;
+    }
+
+    .back-button:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="street-title">{{ street[1] }}</h1>
+    <img class="street-image" src="{{ url_for('static', filename=street[2]) }}" alt="{{ street[1] }}">
+    <div class="street-description">
+      {{ street[3] }}
+    </div>
+    <div class="button-container">
+      <a href="/streets/" class="button back-button">Вернуться на прогулку по улицам</a>
+    </div>
+  </div>
+</body>
+</html>

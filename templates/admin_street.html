@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Главная</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>Главная</title>
+
+  <script>
+    function goToProductPage(streetId) {
+      window.location.href = "/street/" + streetId;
+    }
+  </script>
   <script>
     function confirmDelete(form) {
       if (confirm("Вы точно хотите удалить этот товар?")) {
@@ -12,48 +18,38 @@
       }
     }
   </script>
-  <script>
-    function goToProductPage(infoId) {
-      window.location.href = "/info/" + infoId;
-    }
-  </script>
+
 </head>
 <body>
-  <!-- Header -->
   <div class="header">
     <h1>Музей Школы №26 имени А.Н.Сивачева</h1>
     <img src="{{ url_for('static', filename='uploads/school_simvol.png') }}" class="hero-img" alt="Ишак">
     <div class="header-nav">
       <a href="/search/">Поиск</a>
-      <a href="/admin_veterans/">Ветераны ВОВ</a>
-      <a href="/admin_street/">Прогулка по улицам Гродно</a>
+      <a href="/admin_main/">Вернуться на главную</a>
       <a href="/a_about/">О нас</a>
       <a href="/logout/">Log out</a>
-    </div></div>
-  <!-- Main Container -->
-    <div class="container">
+    </div>
+  </div>
+  <div class="container">
     <div class="post-row">
       {% for instagram in data %}
-      <div class="post" onclick="goToProductPage({{instagram[0]}})">
-        <h1 class="title">{{instagram[1]}}</h1>
-        <!-- Добавляем отображение бренда ниже названия товара -->
-
+      <div class="post" onclick="goToProductPage({{ instagram[0] }})">
+        <h1 class="title">{{ instagram[1] }}</h1>
         <div class="content">
-          <img id="info_img" src="{{url_for('static', filename=instagram[2])}}" alt="{{instagram[1]}}">
+          <img id="post_img" src="{{ url_for('static', filename=instagram[2]) }}" alt="{{ instagram[1] }}">
         </div>
         <h3 class="description">за информацией нажми на картинку</h3>
-        <!-- Delete Button -->
         <div class="delete-button-container">
-          <form action="/delete_info/{{instagram[0]}}" method="POST" onsubmit="event.preventDefault(); confirmDelete(this);">
-            <button class="delete-button" type="submit">Удалить информацию</button>
+          <form action="/delete_street/{{ instagram[0] }}" method="POST" onsubmit="event.preventDefault(); confirmDelete(this);">
+            <button class="delete-button" type="submit">Удалить улицу</button>
           </form>
         </div>
       </div>
       {% endfor %}
     </div>
-    <!-- Add Button -->
     <div class="add-button-container">
-      <a href="/add_info/" class="add-button">Добавить информацию</a>
+      <a href="/add_street/" class="add-button">Добавить улицу</a>
     </div>
   </div>
 </body>

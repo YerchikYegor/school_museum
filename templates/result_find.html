@@ -216,10 +216,15 @@
             window.location.href = "/product/" + productId;
         }
     </script>
+    <script>
+        function goToProductPage(streetId) {
+            window.location.href = "/street/" + streetId;
+        }
+    </script>
 </head>
 <body>
     <div class="header">
-        <h1>ISHAK_SHMOT</h1>
+        <h1>музей</h1>
         <div class="header-nav">
             <a href="/">Назад на главную</a>
             <a href="/search/">Поиск</a>
@@ -229,17 +234,18 @@
 
     <div class="container">
         <div class="post-row">
-            {% for instagram in data %}
+            {% for instagram in data or street %}
             <div class="post" onclick="goToProductPage({{instagram[0]}})">
                 <h1 class="title">{{instagram[1]}}</h1>
                 <div class="content">
                     <img id="post_img" src="{{url_for('static', filename=instagram[2])}}">
                 </div>
-                <h3 class="description">{{instagram[3]}}</h3>
-                <h3 class="price">Цена: {{instagram[4]}} руб.</h3>
+                <h3 class="description">за инфомацией нажми на картинку</h3>
             </div>
             {% endfor %}
         </div>
     </div>
+
+
 </body>
 </html>

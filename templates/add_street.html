@@ -101,18 +101,18 @@
 </head>
 <body>
   <div class="form-container">
-    <h1>Добавить Ветерана</h1>
-    <form action="/upload/" method="post" enctype="multipart/form-data">
-      <label for="title">ФИО Ветерана:</label>
-      <input type="text" id="title" name="title" placeholder="Введите ФИО" required>
+    <h1>Добавить улицу</h1>
+    <form action="/upload_street/" method="post" enctype="multipart/form-data">
+      <label for="title">Название улицы:</label>
+      <input type="text" id="title" name="title" placeholder="Введите название улицы" required>
 
-      <label for="image">Изображение для товара:</label>
+      <label for="image">Изображение для улицы:</label>
       <input type="file" id="image" name="image" accept="image/*" required>
 
       <label for="description">Описание:</label>
-      <textarea id="description" name="description" rows="4" placeholder="Введите описание товара" required></textarea>
+      <textarea id="description" name="description" rows="4" placeholder="Введите описание улицы" required></textarea>
 
-      <button type="submit">Добавить Ветерана</button>
+      <button type="submit">Добавить улицу</button>
     </form>
   </div>
 </body>

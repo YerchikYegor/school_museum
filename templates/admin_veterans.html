@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Главная</title>
   <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  <title>Главная</title>
+
   <script>
-    function goToProductPage(infoId) {
-      window.location.href = "/info/" + infoId;
+    function goToProductPage(productId) {
+      window.location.href = "/product/" + productId;
+    }
+  </script>
+  <script>
+    function confirmDelete(form) {
+      if (confirm("Вы точно хотите удалить этот товар?")) {
+        form.submit();
+      }
     }
   </script>
 </head>
@@ -18,13 +26,13 @@
     <img src="{{ url_for('static', filename='uploads/school_simvol.png') }}" class="hero-img" alt="Ишак">
     <div class="header-nav">
       <a href="/search/">Поиск</a>
-      <a href="/veterans/">Ветераны ВОВ</a>
-      <a href="/streets/">Прогулка по улицам Гродно</a>
-      <a href="/about/">О нас</a>
-      <a href="/login/">Log in</a>
-    </div></div>
+      <a href="/admin_main/">Вернуться на главную</a>
+      <a href="/a_about/">О нас</a>
+      <a href="/logout/">Log out</a>
+    </div>
+  </div>
   <!-- Main Container -->
-   <div class="container">
+  <div class="container">
     <div class="post-row">
       {% for instagram in data %}
       <div class="post" onclick="goToProductPage({{instagram[0]}})">
@@ -32,19 +40,21 @@
         <!-- Добавляем отображение бренда ниже названия товара -->
 
         <div class="content">
-          <img id="info_img" src="{{url_for('static', filename=instagram[2])}}" alt="{{instagram[1]}}">
+          <img id="post_img" src="{{url_for('static', filename=instagram[2])}}" alt="{{instagram[1]}}">
         </div>
         <h3 class="description">за информацией нажми на картинку</h3>
         <!-- Delete Button -->
         <div class="delete-button-container">
-          <form action="/delete_info/{{instagram[0]}}" method="POST" onsubmit="event.preventDefault(); confirmDelete(this);">
-
+          <form action="/delete/{{instagram[0]}}" method="POST" onsubmit="event.preventDefault(); confirmDelete(this);">
+            <button class="delete-button" type="submit">Удалить Ветерана</button>
           </form>
         </div>
       </div>
       {% endfor %}
     </div>
-
+    <!-- Add Button -->
+    <div class="add-button-container">
+      <a href="/add/" class="add-button">Добавить Ветерана</a>
     </div>
   </div>
 </body>

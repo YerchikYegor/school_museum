@@ -101,19 +101,19 @@
 </head>
 <body>
     <div class="form-container">
-        <h1>Добавить отзыв</h1>
-        <form action="/upload_reviews/" method="post" enctype="multipart/form-data">
-            <label for="title">Заголовок отзыва:</label>
+        <h1>Добавить информацию</h1>
+        <form action="/upload_info/" method="post" enctype="multipart/form-data">
+            <label for="title">Заголовок Вашей информации:</label>
             <input type="text" id="title" name="title" placeholder="Введите название" required>
 
 
-            <label for="image">Изображение для отзыва:</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
+            <label for="image">Изображение для Вашей информации:</label>
+            <input type="file" id="image" name="image" accept="image/*" required multiple>
 
             <label for="description">Описание:</label>
-            <textarea id="description" name="description" rows="4" placeholder="Введите описание отзыва" required></textarea>
+            <textarea id="description" name="description" rows="4" placeholder="Введите описание Вашей информации" required></textarea>
 
-            <button type="submit">Добавить отзыв</button>
+            <button type="submit">Добавить информацию</button>
         </form>
     </div>
 </body>
