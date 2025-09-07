@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
     :root {
-      /* Изменены цвета с голубого на светло-зеленые и затем немного затемнены */
-      --primary-color: #76C776;  /* Чуть темнее оригинального LightGreen */
-      --primary-dark:  #2E8B57;  /* Темный зеленый */
+      --primary-color: #76C776;
+      --primary-dark:  #2E8B57;
       --secondary-color: #28a745;
       --danger-color: #ff4d4d;
       --bg-light: #f0f4f8;
@@ -21,231 +20,129 @@
     body {
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(to bottom, var(--bg-light), var(--bg-dark));
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       color: #333;
     }
 
-    /* Header и Навигация */
+    /* Header */
     .header {
       background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
-      color: white;
+      color: #fff;
       padding: 20px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
-      transition: background 0.3s ease;
     }
-
-    .header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-
-    .header-nav {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .header a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      padding: 14px 26px;
-      /* Градиент обновлен до более темных зеленых оттенков */
+    .header h1 { margin: 0; font-size: 1.8rem; }
+    .header-nav { display: flex; gap: 15px; }
+    .header-nav a {
+      color: #fff; text-decoration: none; font-weight: 600;
+      padding: 10px 20px; border-radius: 30px;
       background: linear-gradient(90deg, #2E8B57, #1C7C3A);
-      border-radius: 30px;
-      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .header a:hover {
-      background: linear-gradient(90deg, #1C7C3A, #155A2C);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Основной контейнер */
+    /* Container */
     .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 20px;
-      background: var(--card-bg);
+      max-width: 1200px; margin: 30px auto;
+      padding: 20px; background: var(--card-bg);
       border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
-    /* Карточки товаров */
+    /* Posts */
     .post-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: space-between;
+      display: flex; flex-wrap: wrap;
+      gap: 20px; justify-content: space-between;
     }
-
     .post {
       flex: 0 0 calc(33.333% - 20px);
       background: linear-gradient(135deg, var(--card-bg), #f8f8f8);
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      padding: 15px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 15px; padding: 15px; text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       cursor: pointer;
     }
-
     .post:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transform: scale(1.03);
+    }
+    .post .title { font-size: 1.2rem; margin: 10px 0; }
+    .post .content img {
+      width: 100%; border-radius: 10px;
+    }
+    .post .description {
+      font-size: 1rem; color: #555; margin: 10px 0;
     }
 
-    .title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #333;
-      margin: 10px 0;
-    }
-
-    .content img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      transition: opacity 0.3s ease;
-    }
-
-    .content img:hover {
-      opacity: 0.9;
-    }
-
-    .description {
-      font-size: 1rem;
-      color: #555;
-      margin: 10px 0;
-    }
-
-    .price {
-      font-size: 1rem;
-      font-weight: bold;
-      color: var(--secondary-color);
-      margin: 10px 0;
-    }
-
-    /* Кнопка удаления товара */
-    .delete-button-container {
-      margin-top: 15px;
-    }
-
-    .delete-button {
-      font-size: 0.9rem;
-      font-weight: bold;
-      padding: 10px 20px;
-      color: #fff;
-      background: linear-gradient(90deg, var(--danger-color), #ff0000);
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .delete-button:hover {
-      background: linear-gradient(90deg, #cc0000, #990000);
-      transform: translateY(-2px);
-    }
-
-    /* Кнопка добавления нового товара */
-    .add-button-container {
-      margin-top: 20px;
-      text-align: center;
-    }
-
+    /* Buttons */
+    .add-button-container { text-align: center; margin-top: 20px; }
     .add-button {
-      font-size: 1rem;
-      font-weight: bold;
-      padding: 12px 25px;
-      color: #fff;
+      display: inline-block; padding: 12px 25px; color: #fff;
       background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 30px; text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .add-button:hover {
-      background: linear-gradient(90deg, var(--primary-dark), #1C7C3A);
-      transform: translateY(-2px);
-    }
-
-    /* Стили для изображения Ишака (уменьшенный размер) */
-    .hero-img {
-      max-width: 60px; /* уменьшен с 200px до 100px */
-      width: 100%;
-      border-radius: 50%;
-      margin-right: 15px;
-    }
-
-    /* Медиа запросы */
+    /* Responsive */
     @media (max-width: 768px) {
-      .post {
-        flex: 0 0 calc(50% - 20px);
-      }
+      .post { flex: 0 0 calc(50% - 20px); }
     }
-
     @media (max-width: 576px) {
-      .post {
-        flex: 0 0 100%;
-      }
-      .header-nav {
-        flex-wrap: wrap;
-        gap: 10px;
-      }
+      .post { flex: 0 0 100%; }
+      .header { padding: 15px; }
+      .header-nav { gap: 10px; flex-wrap: wrap; }
     }
   </style>
-    <script>
-        function goToProductPage(productId) {
-            window.location.href = "/product/" + productId;
-        }
-    </script>
-    <script>
-        function goToProductPage(streetId) {
-            window.location.href = "/street/" + streetId;
-        }
-    </script>
+
+  <script>
+    /**
+     * Перенаправляет на страницу типа resourceType с заданным id.
+     * resourceType — 'product' или 'street'.
+     */
+    function goToPage(resourceType, id) {
+      window.location.href = '/' + resourceType + '/' + id;
+    }
+  </script>
 </head>
 <body>
-    <div class="header">
-        <h1>музей</h1>
-        <div class="header-nav">
-            <a href="/">Назад на главную</a>
-            <a href="/search/">Поиск</a>
-            <a href="/about/">О нас</a>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="post-row">
-            {% for instagram in data or street %}
-            <div class="post" onclick="goToProductPage({{instagram[0]}})">
-                <h1 class="title">{{instagram[1]}}</h1>
-                <div class="content">
-                    <img id="post_img" src="{{url_for('static', filename=instagram[2])}}">
-                </div>
-                <h3 class="description">за инфомацией нажми на картинку</h3>
+  <div class="header">
+    <h1>Музей</h1>
+    <nav class="header-nav">
+      <a href="/">Главная</a>
+      <a href="/search/">Поиск</a>
+      <a href="/about/">О нас</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="post-row">
+      {% if data %}
+        {# Поиск по ветерану #}
+        {% for vet in data %}
+          <div class="post" onclick="goToPage('product', {{ vet[0] }})">
+            <h2 class="title">{{ vet[1] }}</h2>
+            <div class="content">
+              <img src="{{ url_for('static', filename=vet[2]) }}" alt="{{ vet[1] }}">
             </div>
-            {% endfor %}
-        </div>
+            <p class="description">Нажмите на картинку, чтобы узнать о ветеране</p>
+          </div>
+        {% endfor %}
+      {% elif street %}
+        {# Поиск по улице #}
+        {% for st in street %}
+          <div class="post" onclick="goToPage('street', {{ st[0] }})">
+            <h2 class="title">{{ st[1] }}</h2>
+            <div class="content">
+              <img src="{{ url_for('static', filename=st[2]) }}" alt="{{ st[1] }}">
+            </div>
+            <p class="description">Нажмите на картинку, чтобы открыть улицу</p>
+          </div>
+        {% endfor %}
+      {% endif %}
     </div>
-
+  </div>
 
 </body>
 </html>

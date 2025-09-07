@@ -6,6 +6,9 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from future.backports.datetime import timedelta
 
 from flask_session import Session
+import os
+curr_path=os.path.dirname(__file__)
+os.chdir(curr_path)
 conn = sqlite3.connect('data.db', check_same_thread=False)
 cursor = conn.cursor()
 
@@ -273,4 +276,3 @@ def logout():
     flash('Вы вышли из профиля', 'danger')
     return redirect(url_for("main"))
 
-app.run(debug=True)
